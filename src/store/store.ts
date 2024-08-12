@@ -1,10 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { boardSlice } from './slices';
+import { configureStore } from "@reduxjs/toolkit";
+import boardReducer from "./slices/boardSlice";
 
 export const store = configureStore({
-  reducer: {
-    board: boardSlice.reducer,
-  }
+	reducer: {
+		board: boardReducer,
+	},
 });
 
 export type RootState = ReturnType<typeof store.getState>;

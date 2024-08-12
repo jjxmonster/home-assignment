@@ -1,10 +1,12 @@
-import './App.scss';
-import { WorkspacesSidebar } from "./components/workspacesSidebar"
+import { Outlet } from "react-router-dom";
+import "./App.scss";
+import { WorkspacesSidebar } from "./components/workspacesSidebar";
 
 export const App = () => {
-  return (
-    <div className="container">
-      <WorkspacesSidebar />
-    </div>
-  )
-}
+	return (
+		<div className="container">
+			<WorkspacesSidebar />
+			<Outlet />
+		</div>
+	);
+};
