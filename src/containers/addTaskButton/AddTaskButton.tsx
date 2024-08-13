@@ -1,15 +1,29 @@
+import clsx from "clsx";
 import { useAppDispatch } from "../../hooks/rtk";
 import { addTask } from "../../store/slices";
+import "./AddTaskButton.scss";
+import { Add } from "../../assets/icons";
 
-export const AddTaskButton = () => {
+interface AddTaskButtonProps {
+	parentId?: string;
+}
+
+export const AddTaskButton = ({ parentId }: AddTaskButtonProps) => {
 	const dispatch = useAppDispatch();
 
 	const handleAddTask = () => {
-		dispatch(
-			addTask({
-				title: "New Task",
-			})
-		);
+		const newTaskId = crypto.randomUUID();
+		dispatch(addTask({ taskId: newTaskId, title: "", parentTaskId: parentId }));
 	};
-	return <button onClick={handleAddTask}>Add Task Button</button>;
+	return (
+		<button
+			className={clsx("add-task-button", {
+				"hidden-button": parentId !== undefined,
+			})}
+			type="button"
+			onClick={handleAddTask}
+		>
+			<Add /> Add a card
+		</button>
+	);
 };

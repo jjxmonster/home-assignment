@@ -1,8 +1,40 @@
+import { useEffect, useState } from "react";
+import { AddTaskButton } from "../../containers/addTaskButton/AddTaskButton";
+import { TaskActions } from "../../containers/taskActions/TaskActions";
+import { TaskInput } from "../../containers/taskInput/TaskInput";
 import { TaskInterface } from "../../store/types";
+import "./TaskCard.scss";
+import { Delete } from "../../assets/icons/Delete";
 
 interface TaskCardProps {
 	task: TaskInterface;
 }
 export const TaskCard = ({ task }: TaskCardProps) => {
-	return <div>Task Card</div>;
+	const [isDisabled, setIsDisabled] = useState(false);
+
+	useEffect(() => {
+		if (task.title) {
+			setIsDisabled(true);
+		}
+	}, [task]);
+
+	return (
+		<div id={`task-card-${task.id}`} className="task-card">
+			<div className="task-card-input">
+				<TaskInput disabled={isDisabled} taskData={task} />
+				{task.title && (
+					<TaskActions setIsDisabled={setIsDisabled} taskId={task.id} />
+				)}
+			</div>
+			{task.title && (
+				<div className="task-card-button">
+					<AddTaskButton parentId={task.id} />
+				</div>
+			)}
+			<div className="task-card-completed-card">
+				<Delete color="#FFFFFF" />
+				<span style={{ color: "#FFFFFF" }}>Completed</span>
+			</div>
+		</div>
+	);
 };

@@ -1,18 +1,14 @@
-import { TaskCard } from "../../components/taskCard/TaskCard";
+import { TasksListElement } from "../../components/tasksListElement/TasksListElement";
 import { useAppSelector } from "../../hooks/rtk";
-import { AddTaskButton } from "../addTaskButton/AddTaskButton";
+import "./TasksList.scss";
 
 export const TasksList = () => {
 	const tasks = useAppSelector(state => state.board.tasks);
 
-	if (tasks.length === 0) {
-		return <AddTaskButton />;
-	}
-
 	return (
-		<ul>
+		<ul className="tasks-list">
 			{tasks.map(task => (
-				<TaskCard key={task.id} task={task} />
+				<TasksListElement key={task.id} task={task} />
 			))}
 		</ul>
 	);

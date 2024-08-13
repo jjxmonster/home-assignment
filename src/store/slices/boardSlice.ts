@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { BoardInterface, TaskInterface } from "../types";
-import { addNewTask, deleteTaskById, updateTaskById } from "../../utils/utils";
+import {
+	addNewTask,
+	deleteTaskById,
+	updateTaskById,
+} from "../../utils/boardStoreActions";
 
 const initialState: BoardInterface = {
 	tasks: [],
@@ -15,11 +19,10 @@ const boardSlice = createSlice({
 			action: PayloadAction<{
 				title: string;
 				parentTaskId?: string;
+				taskId: string;
 			}>
 		) => {
-			console.log(action.payload);
-			const { title, parentTaskId } = action.payload;
-			const taskId = crypto.randomUUID();
+			const { title, parentTaskId, taskId } = action.payload;
 
 			const newTask: TaskInterface = {
 				id: taskId,
@@ -44,6 +47,6 @@ const boardSlice = createSlice({
 	},
 });
 
-export const { addTask, deleteTask } = boardSlice.actions;
+export const { addTask, deleteTask, editTask } = boardSlice.actions;
 
 export default boardSlice.reducer;
