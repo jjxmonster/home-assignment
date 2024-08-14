@@ -14,11 +14,11 @@ export const menuItems = [
 	{
 		icon: Profile,
 		title: "Profile",
-		to: "/profile",
+		to: "#",
 	},
 	{
 		icon: Search,
 		title: "Search",
-		to: "/search",
+		to: "#",
 	},
 ];
