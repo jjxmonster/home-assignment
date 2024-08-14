@@ -1,0 +1,28 @@
+.hamburger {
+	z-index: 100;
+	outline: none;
+	border: none;
+	display: none;
+	background-color: #ffffff;
+	border-radius: 50%;
+	padding: 12px;
+	flex-direction: column;
+	justify-content: space-around;
+	cursor: pointer;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	gap: 3px;
+	box-shadow: 2px 2px 9px -1px rgba(191, 191, 191, 0.75);
+
+	&-line {
+		width: 20px;
+		height: 3px;
+		background-color: #333;
+		border-radius: 2px;
+	}
+
+	@media (max-width: 768px) {
+		display: flex;
+	}
+}

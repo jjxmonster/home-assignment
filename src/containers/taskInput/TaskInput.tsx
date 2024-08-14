@@ -57,7 +57,7 @@ export const TaskInput = ({ taskData, disabled = false }: TaskInputProps) => {
 			onBlur={handleBlur}
 			onKeyDown={handleKeyPress}
 			type="text"
-			placeholder="Task name"
+			placeholder="Title"
 			autoFocus
 			disabled={disabled}
 		/>

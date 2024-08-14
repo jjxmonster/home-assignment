@@ -4,7 +4,7 @@ import { TaskActions } from "../../containers/taskActions/TaskActions";
 import { TaskInput } from "../../containers/taskInput/TaskInput";
 import { TaskInterface } from "../../store/types";
 import "./TaskCard.scss";
-import { Delete } from "../../assets/icons/Delete";
+import { TaskCompletedNotification } from "../taskCompletedNotification/TaskCompletedNotification";
 
 interface TaskCardProps {
 	task: TaskInterface;
@@ -31,10 +31,7 @@ export const TaskCard = ({ task }: TaskCardProps) => {
 					<AddTaskButton parentId={task.id} />
 				</div>
 			)}
-			<div className="task-card-completed-card">
-				<Delete color="#FFFFFF" />
-				<span style={{ color: "#FFFFFF" }}>Completed</span>
-			</div>
+			<TaskCompletedNotification />
 		</div>
 	);
 };
